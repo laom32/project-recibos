@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { SharedDataService } from 'src/app/services/shared-data.service';
+import { SweetAlertMsgService } from 'src/app/services/sweet-alert-msg.service';
 import { isNullOrUndefined } from 'util';
 
 
@@ -15,7 +17,9 @@ export class SignInComponent implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _auth: AuthService
+    private _auth: AuthService,
+    private _shared: SharedDataService,
+    private _msg: SweetAlertMsgService
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +37,10 @@ export class SignInComponent implements OnInit {
   }
   doLogin() {
     let info = this._form.value;
+    this._shared.cargando = true;
     this._auth.signIn(info.user, info.password).subscribe({
       next: data => {
-        console.log(data);
+        this._shared.cargando = false;
         if (data.attributes === undefined) {
           this._auth.evaluarMensajesCognito(data);
         } else {
@@ -49,7 +54,9 @@ export class SignInComponent implements OnInit {
           this._router.navigateByUrl(redirectURL);
         }
       }, error: data => {
+        this._shared.cargando = false;
         console.log(data);
+        this._msg.alertError("Error", "No es posible iniciar sesión en estos momentos, favor de intentarlo de nuevo en 5 minutos.");
       }
     });
     // this._router.navigate(["/home"]);

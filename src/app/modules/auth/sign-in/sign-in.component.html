@@ -1,35 +1,37 @@
-<form [formGroup]="_form" class="example-form">
-    <mat-form-field class="example-full-width">
-        <mat-label>Correo electrónico</mat-label>
-        <input matInput formControlName="user" placeholder="Placeholder">
-        <mat-icon matSuffix>person</mat-icon>
-        <!-- <mat-hint>Hint</mat-hint> -->
-        <mat-error *ngIf="_form?.controls?.user?.hasError('required')">
-            Correo electrónico requerido
-        </mat-error>
-        <mat-error *ngIf="_form?.controls?.user?.hasError('email')">
-            Porfavor introduce un correo electrónico valido
-        </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-        <mat-label>Contraseña</mat-label>
-        <input matInput type="password" formControlName="password" placeholder="Placeholder" #passwordField>
-        <button mat-icon-button type="button"
-            (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
-            matSuffix>
-            <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'">visibility</mat-icon>
-            <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
-        </button>
-        <mat-error *ngIf="_form?.controls?.password?.hasError('withoutSpaceError')">
-            La contraseña no debe de contener espacios vacíos.
-        </mat-error>
-        <mat-error *ngIf="_form?.controls?.password?.hasError('required') ">
-            El nombre es <strong>requerido</strong>
-        </mat-error>
-        <mat-error *ngIf="_form?.controls?.password?.hasError('minlength') ">
-            La contraseña debe contener al menos <strong>8 caracteres</strong>.
-        </mat-error>
-    </mat-form-field>
-    <button mat-stroked-button color="primary" (click)="doLogin()">Iniciar sesión</button>
-</form>
+<div class="backgroundSing example-full-width ">
+    <form [formGroup]="_form" class="example-form">
+        <h1>Iniciar sesión</h1>
+        <mat-form-field class="w100">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="user">
+            <mat-icon class="icon" matSuffix>person</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+            <mat-error class="font14" *ngIf="_form?.controls?.user?.hasError('required')">
+                Correo electrónico requerido
+            </mat-error>
+            <mat-error class="font14" *ngIf="_form?.controls?.user?.hasError('email')">
+                Porfavor introduce un correo electrónico válido
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w100 mt-2">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" #passwordField>
+            <button mat-icon-button type="button"
+                (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                matSuffix>
+                <mat-icon class="icon" *ngIf="passwordField.type === 'password'">visibility</mat-icon>
+                <mat-icon class="icon" *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+            </button>
+            <mat-error class="font14" *ngIf="_form?.controls?.password?.hasError('withoutSpaceError')">
+                La contraseña no debe de contener espacios vacíos.
+            </mat-error>
+            <mat-error class="font14" *ngIf="_form?.controls?.password?.hasError('required') ">
+                El nombre es requerido
+            </mat-error>
+            <mat-error class="font14" *ngIf="_form?.controls?.password?.hasError('minlength') ">
+                La contraseña debe contener al menos 8 caracteres.
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="btnLogin mt-2" (click)="doLogin()">Iniciar sesión</button>
+    </form>
+</div>

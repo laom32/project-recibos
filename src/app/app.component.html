@@ -12,3 +12,21 @@
     </button>
 </mat-toolbar>
 <router-outlet></router-outlet>
+
+<div *ngIf="_shared?.cargando">
+    <div class="modalOn">
+        <div class="loadings">
+            <!-- <img class="width" src="./../assets/loading.gif"> <br> -->
+            <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>

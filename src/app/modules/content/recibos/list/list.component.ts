@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { RecibosService } from 'src/app/services/recibos.service';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 import { SweetAlertMsgService } from 'src/app/services/sweet-alert-msg.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list',
@@ -12,21 +14,39 @@ import { SweetAlertMsgService } from 'src/app/services/sweet-alert-msg.service';
 export class ListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'proveedor', 'monto', 'moneda', 'fecha', 'comentario', 'actions'];
   dataSource = new MatTableDataSource<any>([]);
+  total: number = 0;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  pageNumber: number = 1;
+  pageSize: number = 2;
   constructor(
     private _recibo: RecibosService,
     private _router: Router,
-    private _msg: SweetAlertMsgService
+    private _msg: SweetAlertMsgService,
+    private _shared: SharedDataService
   ) { }
 
   ngOnInit(): void {
     this.getListado();
+    // this.paginator.page.subscribe(data=>{
+    //   console.log(data);
+    // })
   }
 
   getListado() {
-    this._recibo.getRecibosList().subscribe({
+    this._shared.cargando = true;
+    this._recibo.getRecibosList(this.pageNumber, this.pageSize).subscribe({
       next: data => {
-        console.log(data);
-        this.dataSource = new MatTableDataSource(data.recibos);
+        this._shared.cargando = false;
+        // console.log(data);
+        if (data.isSuccess) {
+          this.dataSource = new MatTableDataSource(data.recibos);
+          this.total = data.total;
+        } else {
+          this._msg.alertWarning("Atención", `${data.msg}`);
+        }
+      }, error: data => {
+        this._shared.cargando = false;
+        this._msg.alertError("Error", `${data.msg}`);
       }
     });
   }
@@ -43,13 +63,22 @@ export class ListComponent implements OnInit {
   borrar(recibo: any) {
     this._recibo.Remove(recibo.id).subscribe({
       next: data => {
-        console.log(data);
+        // console.log(data);
         if (data.isSuccess) {
           this.dataSource = new MatTableDataSource(this.dataSource.data.filter(x => x.id !== recibo.id));
+        } else {
+          this._msg.alertWarning("Atención", `${data.msg}`);
         }
       }, error: data => {
         console.log(data);
+        this._msg.alertError("Error", `${data.msg}`);
       }
     });
+  }
+  pageEvent(ev: any) {
+    console.log(ev);
+    this.pageNumber = ev.pageIndex + 1;
+    this.getListado();
+    // this.mostrarVehiculosEstatu(this.estatusSeleccionado);
   }
 }

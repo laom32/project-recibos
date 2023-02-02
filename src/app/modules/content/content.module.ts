@@ -11,7 +11,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { ListComponent } from './recibos/list/list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/shared/date.adapter';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const content: Route[] = [
   {
@@ -50,7 +52,17 @@ const content: Route[] = [
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    // MatMomentDateModule
+    MatPaginatorModule
+  ],
+  providers: [
+    {
+      provide: DateAdapter, useClass: AppDateAdapter
+    },
+    {
+      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
+    },
+    // CurrencyPipe, DecimalPipe
+
   ]
 })
 export class ContentModule { }

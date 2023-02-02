@@ -7,11 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { environment } from 'src/environments/environment';
 import localeEs from '@angular/common/locales/es';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import { AuthService } from './services/auth/auth.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { InterceptorService } from './services/interceptors/interceptor.service';
 
 registerLocaleData(localeEs);
 
@@ -30,6 +31,11 @@ registerLocaleData(localeEs);
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl },
     { provide: MAT_DATE_LOCALE, useValue: 'es' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    },
     AuthService,
   ],
   bootstrap: [AppComponent]
