@@ -1,0 +1,63 @@
+<h2>Listado de recibos</h2>
+<button mat-stroked-button color="primary" [routerLink]="['/recibos/recibo']">Agregar</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- # Column -->
+    <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> # </th>
+        <td mat-cell *matCellDef="let element;let i = index;"> {{i+1}} </td>
+    </ng-container>
+
+    <!-- Proveedor Column -->
+    <ng-container matColumnDef="proveedor">
+        <th mat-header-cell *matHeaderCellDef> Proveedor </th>
+        <td mat-cell *matCellDef="let element"> {{element.proveedor}} </td>
+    </ng-container>
+
+    <!-- Monto Column -->
+    <ng-container matColumnDef="monto">
+        <th mat-header-cell *matHeaderCellDef> Monto </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.monto | currency}}
+        </td>
+    </ng-container>
+
+    <!-- Moneda Column -->
+    <ng-container matColumnDef="moneda">
+        <th mat-header-cell *matHeaderCellDef> Moneda </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.moneda === 0 ? 'MXN':''}}
+            {{element.moneda === 1 ? 'USD':''}}
+        </td>
+    </ng-container>
+
+    <!-- Fecha Column -->
+    <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <!-- Comentario Column -->
+    <ng-container matColumnDef="comentario">
+        <th mat-header-cell *matHeaderCellDef> Comentario </th>
+        <td mat-cell *matCellDef="let element"> {{element.comentario}} </td>
+    </ng-container>
+
+    <!-- Acciones Column -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-mini-fab color="primary" (click)="goTo(element)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" (click)="preBorrar(element)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

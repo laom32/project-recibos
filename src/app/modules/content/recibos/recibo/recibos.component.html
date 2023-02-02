@@ -1,0 +1,39 @@
+<form [formGroup]="_form" class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Proveedor</mat-label>
+        <input matInput formControlName="proveedor" placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Monto</mat-label>
+        <input matInput formControlName="monto" placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Moneda</mat-label>
+        <mat-label>State</mat-label>
+        <mat-select formControlName="moneda">
+            <mat-option *ngFor="let mon of monedas" [value]="mon.value">
+                {{mon.text}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Fecha</mat-label>
+        <input matInput formControlName="fecha" [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Comentario</mat-label>
+        <input matInput formControlName="comentario" placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <button mat-stroked-button color="primary" (click)="preGuardar()">Guardar</button>
+    <button mat-stroked-button color="warn" [routerLink]="['/recibos/list']">Regresar</button>
+</form>
