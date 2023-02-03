@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { RecibosService } from 'src/app/services/recibos.service';
 import { SharedDataService } from 'src/app/services/shared-data.service';
 import { SweetAlertMsgService } from 'src/app/services/sweet-alert-msg.service';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list',
@@ -22,8 +22,11 @@ export class ListComponent implements OnInit {
     private _recibo: RecibosService,
     private _router: Router,
     private _msg: SweetAlertMsgService,
-    private _shared: SharedDataService
-  ) { }
+    private _shared: SharedDataService,
+    private paginator2: MatPaginatorIntl,
+  ) { 
+    this.paginator2.itemsPerPageLabel = "Registros por página";
+  }
 
   ngOnInit(): void {
     this.getListado();

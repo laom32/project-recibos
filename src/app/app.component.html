@@ -1,32 +1,32 @@
 <mat-toolbar *ngIf="profile">
-    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-    </button> -->
-    <span>Recibos by Lorenzo Ochoa</span>
-    <span class="example-spacer"></span>
-    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-    </button> -->
-    <button mat-icon-button class="example-icon" (click)="cerrarSesion()">
-        <mat-icon>logout</mat-icon>
-    </button>
+    <div class="w100">
+        <div class="w80">
+            <span>Recibos by Lorenzo Ochoa</span>
+            <span class="example-spacer"></span>
+        </div>
+        <div class="w20">
+            <button mat-icon-button class="example-icon" style="cursor: pointer;" (click)="cerrarSesion()" matTooltip="Cerrar sesión">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+    </div>
 </mat-toolbar>
 <router-outlet></router-outlet>
 
-<div *ngIf="_shared?.cargando">
-    <div class="modalOn">
-        <div class="loadings">
-            <!-- <img class="width" src="./../assets/loading.gif"> <br> -->
-            <div class="lds-roller">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+<div *ngIf="_shared?.cargando" class="modalOn">
+
+    <div class="loadings">
+        <!-- <img class="width" src="./../assets/loading.gif"> <br> -->
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
+
 </div>

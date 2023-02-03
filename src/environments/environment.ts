@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // baseUrl: 'https://kkwyj6emz0.execute-api.us-east-1.amazonaws.com/Prod/api/v1/',//api
-  baseUrl: 'https://localhost:55084/api/v1/',//local
+  baseUrl: 'https://kkwyj6emz0.execute-api.us-east-1.amazonaws.com/Prod/api/v1/',//api
+  // baseUrl: 'https://localhost:55084/api/v1/',//local
   amplify: {
     Auth: {
       region: 'us-east-1',

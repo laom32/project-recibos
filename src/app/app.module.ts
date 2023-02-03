@@ -13,6 +13,7 @@ import { AuthService } from './services/auth/auth.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { InterceptorService } from './services/interceptors/interceptor.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 registerLocaleData(localeEs);
 
@@ -26,7 +27,8 @@ registerLocaleData(localeEs);
     BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl },

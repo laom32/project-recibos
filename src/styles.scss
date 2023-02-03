@@ -1,4 +1,130 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-autocomplete-panel {
+    background: #424242;
+    background: #ffffff;
+    color: #fff;
+    color: #000000;
+}
+
+.mat-table {
+    background: #424242;
+    background: #fff;
+    color: #000 !important;
+}
+
+mat-row,
+mat-header-row,
+mat-header-row,
+mat-footer-row,
+mat-footer-row,
+th.mat-header-cell,
+th.mat-header-cell,
+td.mat-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    border-bottom-color: rgba(255, 255, 255, .12);
+    border-bottom-color: rgba(54, 53, 53, 0.12);
+}
+
+.mat-header-cell {
+    color: rgba(255, 255, 255, .7);
+    color: #000;
+}
+
+.mat-cell,
+.mat-footer-cell {
+    color: #fff;
+    color: #000;
+}
+
+.mat-calendar-body-cell-content,
+.mat-date-range-input-separator {
+    color: #fff;
+    color: #000;
+    border-color: transparent;
+    border-color: transparent;
+}
+
+.mat-form-field-label {
+    color: rgba(255, 255, 255, .7);
+    color: rgb(128, 128, 128);
+}
+
+.mat-form-field-ripple {
+    background-color: #fff;
+    background-color: rgb(128, 128, 128);
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+    color: rgba(255, 255, 255, .7);
+    color: rgb(128, 128, 128);
+}
+
+
+.mat-form-field-appearance-legacy .mat-hint {
+    color: rgba(255, 255, 255, .7);
+    color: rgb(128, 128, 128);
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: rgba(255, 255, 255, .7);
+    background-color: rgb(128, 128, 128);
+}
+
+.mat-input-element::placeholder {
+    color: rgba(255, 255, 255, .5);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.mat-input-element::-moz-placeholder {
+    color: rgba(255, 255, 255, .5);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.mat-input-element::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, .5);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.mat-input-element:-ms-input-placeholder {
+    color: rgba(255, 255, 255, .5);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.mat-paginator {
+    background: #424242;
+    background: #fff;
+    color: #000 !important;
+}
+
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger {
+    color: rgba(255, 255, 255, .7);
+    color: #000 !important;
+}
+
+.mat-select-value {
+    color: #fff;
+    color: #000;
+}
+
+.mat-select-placeholder {
+    color: rgba(255, 255, 255, .5);
+    color: #000;
+}
+
+.mat-select-arrow {
+    color: rgba(255, 255, 255, .7);
+    color: #000;
+}

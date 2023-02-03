@@ -1,5 +1,7 @@
 <div class="backgroundSing example-full-width ">
+
     <form [formGroup]="_form" class="example-form">
+        <h1>Agregar recibo</h1>
         <mat-form-field class="w100">
             <mat-label>Proveedor</mat-label>
             <input matInput formControlName="proveedor" placeholder="Proveedor">
@@ -29,8 +31,7 @@
         </mat-form-field>
         <mat-form-field class="w100">
             <mat-label>Fecha</mat-label>
-            <input matInput formControlName="fecha" [matDatepicker]="picker" placeholder="Fecha" [max]="maxDate" (click)="picker.open()"
-                readonly>
+            <input matInput formControlName="fecha" [matDatepicker]="picker" placeholder="Fecha" [max]="maxDate" (click)="picker.open()" readonly>
             <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -46,7 +47,8 @@
                 El Comentario es requerido
             </mat-error>
         </mat-form-field>
-        <button mat-stroked-button color="primary" (click)="preGuardar()">Guardar</button>
-        <button mat-stroked-button color="warn" [routerLink]="['/recibos/list']">Regresar</button>
+
+        <button mat-raised-button class="bnt" [routerLink]="['/recibos/list']">Regresar</button>
+        <button mat-raised-button class="bnt ml-2 " (click)="preGuardar()">Guardar</button>
     </form>
 </div>

@@ -1,16 +1,16 @@
 .example-form {
-    height: 70%;
+    height: 420px;
     width: 400px;
     background-color: rgba(255, 255, 255, 0.13);
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 60%;
+    top: 50%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-    padding: 50px 35px;
+    padding: 25px 35px;
     text-align: center;
 }
 
@@ -29,6 +29,10 @@ form * {
 
 .mt-2 {
     margin-top: 8px;
+}
+
+.ml-2 {
+    margin-left: 50%;
 }
 
 form h1 {
@@ -54,7 +58,7 @@ form .icon {
 }
 
 .backgroundSing {
-    background: #DDE5F4;
+    background: #fff;
     background-size: auto;
     background-repeat: no-repeat;
 }
@@ -65,4 +69,9 @@ form .icon {
     width: 90%;
     border-radius: 18px;
     font-size: 20px !important;
+}
+
+.bnt {
+    background-color: #3e4684 !important;
+    color: white !important;
 }

@@ -7,18 +7,30 @@
     top: 0px;
     right: 0px;
     cursor: wait;
-    // margin: 0px;
-    // padding: 0px;
+    margin: 0px;
+    padding: 0px;
     background-color: rgba(0, 0, 0, 0.4);
     background: rgba(0, 0, 0, 0.4);
     color: rgba(0, 0, 0, 0.4);
     z-index: 2001;
 }
+
+.w100 {
+    width: 100%;
+    display: flex;
+}
+
 .loadings {
     width: 100%;
     height: 100%;
-    margin-left: 47%;
-    margin-top: 22%;
+    justify-content: center;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
+
+.example-icon {
+    text-align: right;
 }
 
 .lds-roller {
@@ -121,8 +133,22 @@
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
+}
+
+.w80 {
+    width: 90%;
+}
+
+.w20 {
+    width: 10%;
+    text-align: right;
+    float: right;
+}
+
+mat-toolbar {
+    background-color: rgb(231, 229, 229) !important;
+    color: rgb(95, 94, 94) !important;
 }
