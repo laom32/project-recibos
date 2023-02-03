@@ -21,7 +21,6 @@
         </mat-form-field>
         <mat-form-field class="w100">
             <mat-label>Moneda</mat-label>
-            <mat-label>State</mat-label>
             <mat-select formControlName="moneda">
                 <mat-option *ngFor="let mon of monedas" [value]="mon.value">
                     {{mon.text}}
