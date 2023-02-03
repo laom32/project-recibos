@@ -3,7 +3,7 @@
         <h1>Iniciar sesión</h1>
         <mat-form-field class="w100">
             <mat-label>Correo electrónico</mat-label>
-            <input matInput formControlName="user">
+            <input matInput formControlName="user" (keyup.enter)="doLogin()">
             <mat-icon class="icon" matSuffix>person</mat-icon>
             <!-- <mat-hint>Hint</mat-hint> -->
             <mat-error class="font14" *ngIf="_form?.controls?.user?.hasError('required')">
@@ -15,7 +15,7 @@
         </mat-form-field>
         <mat-form-field class="w100 mt-2">
             <mat-label>Contraseña</mat-label>
-            <input matInput type="password" formControlName="password" #passwordField>
+            <input matInput type="password" formControlName="password" (keyup.enter)="doLogin()" #passwordField>
             <button mat-icon-button type="button"
                 (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
                 matSuffix>
@@ -26,7 +26,7 @@
                 La contraseña no debe de contener espacios vacíos.
             </mat-error>
             <mat-error class="font14" *ngIf="_form?.controls?.password?.hasError('required') ">
-                El nombre es requerido
+                La contraseña es requerida.
             </mat-error>
             <mat-error class="font14" *ngIf="_form?.controls?.password?.hasError('minlength') ">
                 La contraseña debe contener al menos 8 caracteres.

@@ -35,30 +35,28 @@ export class RecibosComponent implements OnInit {
 
   ngOnInit(): void {
     this.valId = Number(this._route.snapshot.paramMap.get('id'));
-    
+
     this._form = new FormGroup({
       proveedor: new FormControl('', [
         Validators.required,
-        // Validators.maxLength(250),
-        // Validators.minLength(3),
-        // WhiteSpaceValidator
+        Validators.maxLength(50),
+        Validators.minLength(3)
       ]),
       monto: new FormControl(0, [
         Validators.required,
-
+        Validators.min(1)
       ]),
       moneda: new FormControl(0, [
         Validators.required,
-
       ]),
       fecha: new FormControl(new Date(), [
         Validators.required,
-
       ]),
       comentario: new FormControl('', [
         Validators.required,
-
-      ]),
+        Validators.maxLength(100),
+        Validators.minLength(3)
+      ])
     });
     this.cargarRecibo();
   }

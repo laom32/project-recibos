@@ -36,6 +36,9 @@ export class SignInComponent implements OnInit {
     });
   }
   doLogin() {
+    if (this._form.invalid) {
+      return;
+    }
     let info = this._form.value;
     this._shared.cargando = true;
     this._auth.signIn(info.user, info.password).subscribe({
