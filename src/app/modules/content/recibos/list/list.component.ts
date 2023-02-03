@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   total: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageNumber: number = 1;
-  pageSize: number = 2;
+  pageSize: number = 10;
   constructor(
     private _recibo: RecibosService,
     private _router: Router,
